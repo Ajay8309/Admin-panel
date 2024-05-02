@@ -1,0 +1,78 @@
+.leftNav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    background: #FCECD1;
+    width: 96px;
+    height: 100vh;
+}
+
+.links{
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   background: none;
+}
+
+
+.img{
+    background:none;
+}
+
+.logo{
+    margin-bottom: 1rem;
+    color: rgb(153, 126, 51);
+    font-size: 1.1rem;
+}
+
+.user{
+    margin-top: 1rem;
+}
+
+.user, .asana, .workout{
+    margin-bottom: 1rem;
+}
+
+
+
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+   .user img{
+    width: 37px;
+    height: 54px;
+   }
+
+   .asana img{
+    width: 47px;
+    height: 54px;
+   }
+
+   .workout img{
+    width: 63px;
+    height: 54px;
+   }
+  }
+
+
+  /* mobile view  */
+
+  @media only screen and (max-width: 767px) {
+    .leftNav{
+        flex-direction: row;
+        width: 100vw;
+        height: 90px;
+    }
+
+    .logo{
+        display: none;
+    }
+
+    .links{
+        flex-direction: row;
+        justify-content: space-around;
+        width: 100vw;
+        align-items: center;
+        padding: 12px 62px;
+    }
+  }
