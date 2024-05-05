@@ -22,6 +22,12 @@ const User = () => {
   const [verifiedFilter, setVerifiedFilter] = useState(false);
   const [activeFilter, setActiveFilter] = useState(false);
 
+  const [cnt, setCnt] = useState(0);
+
+  setCnt(cnt + 1);
+
+  console.log(cnt);
+
   console.log(user);
 
   const handleFilterModalToggle = () => {
