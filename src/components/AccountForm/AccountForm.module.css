@@ -1,0 +1,86 @@
+.accountFormContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .accountFormCard {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+  }
+  
+  .accountFormHeader {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .accountFormTitle {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .accountFormContent {
+    padding: 10px;
+  }
+  
+  .accountFormLabel {
+    margin-bottom: 15px;
+  }
+  
+  .accountFormLabelSpan {
+    display: block;
+    font-size: 14px;
+    color: #888888;
+  }
+  
+  .accountFormInput {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .accountFormHelperText {
+    color: #ff0000;
+    font-size: 12px;
+    margin-top: 5px;
+  }
+  
+  .accountFormActions {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .accountFormButton {
+    background-color: #0a138b;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .accountFormButtonOutline {
+    background-color: transparent;
+    border: 1px solid #0a138b;
+    color: #0a138b;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .accountFormButton:hover,
+  .accountFormButtonOutline:hover {
+    background-color: #091074;
+    color: #ffffff;
+  }
+  

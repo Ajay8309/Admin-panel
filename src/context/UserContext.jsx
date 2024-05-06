@@ -25,8 +25,8 @@ const UserProvider = ({ children }) => {
 
     useEffect(() => {
         setLoading(true);
-        userService.getUsers().then((response) => {
-            setUser(response.data);
+        userService.getUsers().then((Response) => {
+            setUser(Response.data);
         })
         setLoading(false);
     }, [setUser, setIsLoggedIn]);
