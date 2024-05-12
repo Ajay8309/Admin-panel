@@ -109,12 +109,28 @@ body{
 }
 
 .logoutButton{
+  display: flex;
+  flex-direction: column;
+}
+
+.logContainer {
+  /* border: 2px solid red; */
   flex: 1;
   display: flex;
   justify-content: center;
   margin-bottom: 76px;
+  margin-right: 77px;
   /* margin-top: 24px; */
+
 }
+
+.createNewButton {
+  border: 2px solid red;
+
+}
+
+
+
 
 .searchBar{
     display: flex;
@@ -189,7 +205,9 @@ body{
 .utilsButtons {
   flex: 1;
   display: flex;
+  padding: 5px 29px;
 }
+
 
 .clearSearch{
   /* margin-right: 29.22px; */
@@ -207,7 +225,7 @@ body{
 
 .modalButton{
   font-size: 16px;
-  background: #F6BD60;
+  background:  #fde8e8;
   border-radius: 5px;
   width: 120px;
   padding: 10px 8px;
@@ -261,7 +279,7 @@ border-radius: 5px;
 
 
 .btn{
-    background: #FCECD1;
+    background: #fde8e8;
     border-radius: 5px;
     font-family: 'Nunito';
     font-style: normal;
@@ -675,7 +693,7 @@ border-radius: 5px;
        }
 
        .btn{
-        background: #FCECD1;
+        background: #fde8e8;
         border-radius: 5px;
         font-family: 'Nunito';
         font-style: normal;
@@ -794,6 +812,7 @@ border-radius: 5px;
       flex: 1;
       /* align-items: flex-start; */
       justify-content: space-between;
+      /* border: 2px solid red; */
     }
 
     .navContainer{
@@ -1042,4 +1061,58 @@ border-radius: 5px;
     .apply{
       margin-left:3rem;
     }
+
+    .addButtonContainer {
+      position: fixed;
+      bottom:134px;
+      right: 50px;
+    }
+    
+    .addButton {
+      background-color:  #fde8e8;
+      color: rgb(0, 0, 0);
+      border: none;
+      border-radius: 50%;
+      width: 80px;
+      height: 80px;
+      font-size: 40px;
+      display: block;
+      cursor: pointer;
+      transition: ease-in-out 0.3s; /* Added transition */
+    }
+    
+    .addButton:hover {
+      background-color: #f7e55e;
+    }
+
+    .createNewButton {
+      display: none;
+    }
+
+    
+    
   }
+
+
+  @media (min-width: 1027px) {
+    
+      .createNewButton {
+        position: fixed;
+        top: 100px;
+        right: 70px;
+        padding: 10px;
+        border-radius: 12px;
+        background-color: #fde8e8;
+        border: none;
+        cursor: pointer;
+        font-weight: 500;
+      }
+  }
+
+  @media (min-width: 1027px) {
+    .addButton {
+      display: none;
+    }
+
+  }
+ 

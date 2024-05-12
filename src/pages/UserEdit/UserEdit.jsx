@@ -1,58 +1,48 @@
-import {React, useState} from 'react'
+import {React, useEffect, useState} from 'react'
 import { Button, HelperText, Input, Label } from "@windmill/react-ui";
 import { useForm } from "react-hook-form";
 import LeftNavigation from '../../components/LeftNav/LeftNav'
 import s from "./UserEdit.module.css"
-import TableSearch from '../../assets/tabler_search.jpeg';
 import Logout from '../../assets/tabler_logout.jpeg';
-import Arrowleft from '../../assets/arrowLeft.jpeg';
-import Arrowright from '../../assets/arrowRight.jpeg';
-import Delete from '../../assets/delete.jpeg';
-import Cross from '../../assets/cross.jpeg';
 import { useUser } from '../../context/UserContext';
-import { useNavigate } from 'react-router-dom';
-import PulseLoader from "react-spinners/PulseLoader";
-import authService from '../../services/auth.service';
+import { useNavigate, useParams } from 'react-router-dom';
+import { toast } from 'react-hot-toast';
 import AccountForm from '../../components/AccountForm/AccountForm';
 
 
 const UserEdit = () => {
 
-
+ const {id} = useParams();
  const navigate = useNavigate();
-  
-  const {logout,  updateUserData, userData} = useUser();
+
   const [showFilterModal, setShowFilterModal] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
+  const [data, setData] = useState(null);
+  const { setId, logout, userById } = useUser(); 
   const [isSending, setIsSending] = useState(false);
 
-
-//   console.log(user);
-
+  useEffect(() => {
+    setId(id);
+  }, [id, userById]); 
+  
+  // console.log(userById);
+  
   const handleFilterModalToggle = () => {
     setShowFilterModal(!showFilterModal);
   };
 
   const handleLogout = () => {
     logout();
+    toast.success("User Logged Out");
     navigate('/login');
   }
+  
+  const func = () => {
+    toast.success("Now you can edit data")
+    setShowSettings(!showSettings);
+  }
 
-
-  const resetPassword = () => {
-    setIsSending(true);
-    authService
-      .forgotPassword(userData.email)
-      .then((data) => {
-        if (data.data.status === "OK") {
-          setIsSending(false);
-          toast.success("Email has been sent successfully.");
-        }
-      })
-      .catch((error) => {
-        setIsSending(false);ßß
-      });
-  };
+  
 
   return (
     <div className={s.container}>
@@ -72,59 +62,57 @@ const UserEdit = () => {
           </div>
         </div>
 
-        <div className={s.userList}>
+        {/* <div className={s.userList}> */}
         {showSettings ? (
-        <AccountForm userData={userData} setShowSettings={setShowSettings} />
+        <AccountForm userData={userById} setShowSettings={setShowSettings} />
       ) : (
-        <div className={s.profileContainer}>
+        <div className={s.formContainer1}>
           <div className={s.profileCard}>
-            <div className={s.profileHeader}>
-              <h3 className={s.profileTitle}>Profile</h3>
-              <p className={s.profileSubtitle}>Your personal information</p>
-            </div>
-            <div className={s.profileContent}>
+            
+            <div className={s.formContainer}>
               <dl className={s.profileDetails}>
-                <div className={s.profileRow}>
+
+                <div className={s.inputContainer}>
                   <dt>Full name</dt>
-                  <dd>{userData?.fullname}</dd>
+                  <dd className={s.input}>{userById?.fullname}</dd>
                 </div>
-                <div className={s.profileRow}>
+
+                <div className={s.inputContainer}>
                   <dt>Username</dt>
-                  <dd>{userData?.username}</dd>
+                  <dd className={s.input}>{userById?.username}</dd>
                 </div>
-                <div className={s.profileRow}>
+                <div className={s.inputContainer}>
                   <dt>Email address</dt>
-                  <dd>{userData?.email}</dd>
+                  <dd className={s.input}>{userById?.email}</dd>
                 </div>
-                <div className={s.profileRow}>
-                  <dt>Password</dt>
-                  <dd>
-                    <Button disabled={isSending} onClick={resetPassword}>
-                      {isSending ? <PulseLoader color={"#0a138b"} size={10} /> : "Reset password by email"}
-                    </Button>
-                  </dd>
-                </div>
-                <div className={s.profileRow}>
+                <div className={s.inputContainer}>
                   <dt>Address</dt>
-                  <dd>{userData?.address}</dd>
+                  <dd className={s.input}>{userById?.address}</dd>
                 </div>
-                <div className={s.profileRow}>
+                <div className={s.inputContainer}>
                   <dt>City</dt>
-                  <dd>{userData?.city}</dd>
+                  <dd className={s.input}>{userById?.city}</dd>
                 </div>
-                <div className={s.profileRow}>
+                <div className={s.inputContainer}>
                   <dt>State</dt>
-                  <dd>{userData?.state}</dd>
+                  <dd className={s.input}>{userById?.state}</dd>
                 </div>
-                <div className={s.profileRow}>
+                <div className={s.inputContainer}>
                   <dt>Country</dt>
-                  <dd>{userData?.country}</dd>
+                  <dd className={s.input}>{userById?.country}</dd>
                 </div>
-                <div className={s.profileEdit}>
+                <div className={s.formEdit}>
                   <Button 
                   // iconRight={Edit2}
-                   onClick={(e) => setShowSettings(!showSettings)}>
+                  className={s.saveButton}
+                   onClick={func}>
                     Edit
+                  </Button>
+
+                  <Button 
+                  className={s.saveButton}
+                   >
+                    Delete
                   </Button>
                 </div>
               </dl>
@@ -135,7 +123,7 @@ const UserEdit = () => {
         </div>
         
       </div>
-    </div>
+    // </div>
   )
 }
 

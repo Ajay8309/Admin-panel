@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import productService from "../services/product.service";
 import { toast } from 'react-hot-toast';
+import API from "../api/axios.config";
 
 const ProductContext = createContext();
 
@@ -9,6 +10,8 @@ const ProductProvider = ({ children }) => {
     const [isLoading, setIsLoading] = useState(false);
     const [page, setPage] = useState(1);
     const [filters, setFilters] = useState({}); 
+    const [product, setProduct] = useState(null);
+
 
     
     let response;
@@ -32,7 +35,16 @@ const ProductProvider = ({ children }) => {
       });
     }, [filters]);
 
-
+    const getProductsById = (id) => {
+      setIsLoading(true);
+      console.log("inside getProduct by Id");
+      productService.getProduct(id).then((response) => {
+        // console.log(response.data);
+        setProduct(response.data);
+        // console.log(product);
+        setIsLoading(false);
+      });
+    };
 
     const getProductsByName = (name) => {
       setIsLoading(true);
@@ -64,6 +76,39 @@ const ProductProvider = ({ children }) => {
       })
     }
     
+    const createProduct = async (data) => {
+      productService.createProduct(data).then((response) => {
+        setProduct(response.data);
+      })
+    }
+
+    const updateProductData = async ({ name, description, image_url, weight, material_type_name, category_name, carat }) => {
+      try {
+          const res = await API.put(`products/${product.product_id}`, {
+              name,
+              description,
+              image_url,
+              weight,
+              category_name,
+              material_type_name,
+              carat
+          });
+
+          const updatedProduct = res.data; 
+          setProduct(updatedProduct);
+          // console.log(product);
+          console.log(res);
+      } catch (error) {
+          // Handle the error, e.g., network request failed
+          console.error("Error updating user data:", error);
+      }
+  };
+
+  // delete a product
+  const deleteProduct = (id) => {
+
+  }
+    
     
     
     const updateFilters = (newFilters) => {
@@ -84,6 +129,11 @@ const ProductProvider = ({ children }) => {
           getProductsByName,
           getProductByCategory, 
           getProductByMaterial,
+          getProductsById, 
+          product, 
+          updateProductData, 
+          createProduct, 
+          deleteProduct
         }}
       >
         {children}

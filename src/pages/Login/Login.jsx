@@ -28,6 +28,7 @@ const Login = () => {
       setRedirectToReferrer(true);
     } catch (error) {
       setIsLoading(false);
+      toast.error("Enter correct credentials");
       const errorMessage = error.response?.data.message || "An error occurred";
       toast.error(errorMessage);
     }

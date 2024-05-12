@@ -355,7 +355,7 @@
   .profileCard {
     background-color: #ffffff;
     border-radius: 8px;
-    /* box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
     padding: 20px;
   }
   
@@ -443,7 +443,7 @@
   /* background-color: aqua; */
   width: 100%;
   padding-left: 2rem;
-  /* margin-top: -15px; */
+  margin-top: 1rem;
 }
 
 .formContainer > * {
@@ -471,7 +471,6 @@
   font-weight: 600;
   line-height: 14px;
   letter-spacing: 0em;
-  margin-top: 13px;
 }
 
 .inputContainer .input {
@@ -542,11 +541,11 @@
   }
 
   .formContainer1 {
-    /* display: flex; */
-    /* flex-direction: row-reverse; */
+    display: flex;
+    flex-direction: row-reverse;
     /* border: 2px solid red; */
-    /* justify-content: space-between; */
-    /* align-items: center; */
+    justify-content: space-between;
+    align-items: center;
   }
 
   .input {
@@ -558,7 +557,6 @@
   .formEdit {
     display: flex;
     width: 18vw;
-    margin-top: 13px;
     /* border: 2px solid red; */
     justify-content: space-between;
   }

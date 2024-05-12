@@ -1,0 +1,534 @@
+.container {
+    display: flex;
+    /* border: 2px solid red; */
+  }
+  
+  .rightContainer {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+  
+  .navContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* border: 2px solid red; */
+    /* width: 93.7vw; */
+    padding-left: 2rem;
+    padding-right: 8rem;
+  }
+  
+    
+    .searchFilterSelectAll{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 3;
+    }
+    
+    .itemContainer{
+    display: flex;
+    }
+    
+    .PageName{
+    /* margin-right: 16px; */
+    /* width: 204px; */
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    }
+    
+    .pageTitle{
+    font-family: 'DM Serif Display';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 48px;
+    line-height: 90%;
+    /* or 43px */
+    letter-spacing: -0.01em;    
+    color: #000000;
+    margin-bottom: 18.5px; 
+      /* width: 204px; */
+     
+      /* border: 2px solid red; */
+    }
+    
+    .pageText{
+      font-family: 'Nunito';
+      font-style: normal;
+      font-weight: 500;
+      font-size: 24px;
+      line-height: 100%;
+      /* identical to box height, or 24px */
+      
+      letter-spacing: -0.01em;
+      padding-bottom: 36px;
+      /* Dark Grey */
+      
+      color: #7C7871;
+      /* margin-top: 24px; */
+      
+    }
+    
+    .searchFilterSelectAll{
+    display: flex;
+    /* flex-direction: row; */
+    align-items: center;
+    justify-content: flex-start;
+    /* justify-content: center; */
+    flex: 3;
+    margin-bottom: 76px;
+       /* margin-top: 24px; */
+    
+    }
+    
+    .logoutButton{
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 76px;
+    /* margin-top: 24px; */
+    }
+    
+    .searchBar{
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      /* width: 570px; */
+       width: 39.583vw;
+      /* height: 48px; */
+      background: #F5F5F5;
+      border-radius: 5px;
+      /* border: 2px solid red; */
+      /* margin-right: 8px; */
+      padding-right:0.5rem ;
+      flex: 2;
+      
+    }
+    
+    .filterModal{
+    position: absolute;
+    width: 39.167vw;
+    margin-top: 1rem;
+    height: 128px;
+    /* border: 2px solid red; */
+    display: flex;
+    background: #FFFFFF;
+    box-shadow: 2px 4px 18px rgb(0 0 0 / 10%);
+    border-radius: 10px;
+    align-items: center;
+    justify-content: space-between;
+    /* flex-direction: column; */
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 600;
+    animation-duration: 0.3s;
+    animation-timing-function: ease;
+    animation-name: slideDown;
+    animation-fill-mode: forwards;
+    /* animation-play-state: paused; */
+    animation-play-state: running;
+    }
+    
+    @keyframes slideDown {
+    from {
+      transform: translateY(-50%);
+    }
+    to {
+      transform: translateY(0);
+    }
+    }
+    
+    .searchInput{
+      background: none;
+      /* width: 420px; */
+      height: 48px;
+      font-size: 16px;
+      width: 100%;
+      margin-left: 1rem;
+      margin-right:0.5rem ;
+      border: none;
+    }
+    
+    .searchIcons{
+    display: flex;
+    align-items: center;
+    }
+    
+    .searchButton {
+    margin-left: 1rem;
+    cursor: pointer;
+    }
+    
+    .utilsButtons {
+    flex: 1;
+    display: flex;
+    }
+    
+    .clearSearch{
+    /* margin-right: 29.22px; */
+    cursor: pointer;
+    }
+    
+    
+    .verified, .active{
+    width: 143px;
+    height: 16px;
+    /* border: 2px solid red;   */
+    margin-right: 40px;
+    margin-left: 16px;
+    }
+    
+    .modalButton{
+    font-size: 16px;
+    background: #F6BD60;
+    border-radius: 5px;
+    width: 120px;
+    padding: 10px 8px;
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 600;
+    cursor: pointer;
+    }
+    
+    .modalButton:hover{
+    background-color: #f59d10;
+    }
+    
+    .radioInput{
+    width: 16px;
+    height: 13px;
+    
+    background: #D9D9D9;
+    border-radius: 5px;
+    
+    }
+    
+    .mainCheckBoxContainer{
+    display: flex;
+    justify-content: flex-start;
+    /* border: 2px solid red; */
+    margin-top: 1rem;
+    }
+    
+    .checkBoxContainer{
+    display: flex;
+    /* border: 2px solid red; */
+    flex-direction: column;
+    }
+    
+    .apply{
+    display: flex;
+      flex-direction: column-reverse;
+      align-items: flex-end;
+      /* border: 2px solid red; */
+      justify-content: space-between;
+      width: 8.361vw;
+      height: 125px;
+      padding: 7px 17px;
+      margin-top: 0rem;
+    }
+    
+    .modalClearSearch{
+    
+    }
+    
+    
+    .btn{
+      background: #FCECD1;
+      border-radius: 5px;
+      font-family: 'Nunito';
+      font-style: normal;
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 100%;
+      margin-left: 1rem;
+      border: none;
+      width: 82px;
+      height: 48px;
+      cursor: pointer;
+    }
+    
+    /* .iconOptions{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-left: 8px;
+    background-color: #7C7871;
+    } */
+    
+    
+    
+    
+    .clearBtn{
+      width: 55px;
+      height: 36px;
+      
+      /* Yellow */
+      
+      background: #F6BD60;
+      border-radius: 5px;
+      border: none;
+    }
+    
+    .imgBtn{
+    margin-left: 15px;
+    }
+    
+    .userList{
+    /* margin-left: 2rem; */
+    margin-bottom: auto;
+    /* border: 2px solid red; */
+    }
+    
+    
+    @media only screen and (min-width: 768px) and (max-width: 1024px) {
+    
+         .rightContainer{
+          display: flex;
+          align-items: flex-start;
+          flex-direction: column;
+          justify-content: space-between;
+          /* border: 2px solid red; */
+         }    
+    
+         .logoutButton{
+          margin-left: 8px;
+         }
+    
+    
+         .userList{
+          /* border: 2px solid red; */
+         }
+    
+        
+    }
+    
+    /* mobile view  */
+    
+    @media only screen and (max-width: 767px) {
+      .container{
+        flex-direction: column-reverse;
+    
+      }
+    
+      .rightContainer{
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        /* align-items: flex-start; */
+        justify-content: space-between;
+      }
+    
+      .navContainer{
+        display: flex;
+        flex-direction: column;
+        display: flex;
+        align-items: center;
+        /* justify-content: flex-start; */
+        justify-content: space-between;
+        /* background-color: #F6BD60; */
+        /* width: calc(100vw - 96px); */
+        /* padding: 24px 40px; */
+        /* padding-left: 2rem; */
+        margin-bottom: -9rem;
+        /* border: 2px solid red; */
+        margin-top: 1rem;
+      }
+    
+    }
+    
+    
+    .userList {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    
+    .profileContainer {
+      width: 300px;
+    }
+    
+    .profileCard {
+      background-color: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+    }
+    
+    .profileHeader {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    
+    .profileTitle {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+    
+    .profileSubtitle {
+      font-size: 14px;
+      color: #888888;
+    }
+    
+    .profileContent {
+      padding: 10px;
+    }
+    
+    .profileRow {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+    
+    .profileRow dt {
+      font-weight: bold;
+    }
+    
+    .profileEdit {
+      text-align: center;
+      margin-top: 20px;
+    }
+    
+    .profileEdit button {
+      background-color: #0a138b;
+      color: #ffffff;
+      border: none;
+      border-radius: 5px;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    
+    .profileEdit button:hover {
+      background-color: #091074;
+    }
+    
+
+
+.pageTitle {
+    font-family: "DM Serif Display";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 48px;
+    line-height: 90%;
+    /* or 43px */
+    letter-spacing: -0.01em;
+    color: #000000;
+    margin-top: 20px;
+  }
+  
+  .pageText {
+    font-family: "Nunito";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 100%;
+    /* identical to box height, or 24px */
+  
+    letter-spacing: -0.01em;
+  
+    /* Dark Grey */
+  
+    color: #7c7871;
+    margin-top: 1rem;
+  }
+  
+  .formContainer {
+    /* background-color: aqua; */
+    width: 100%;
+    padding-left: 2rem;
+    margin-top: 1rem;
+  }
+  
+  .formContainer > * {
+    margin-top: 1rem;
+  }
+  
+  .dropZone {
+    height: 11.7vh;
+    width: 32.6vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border: 1px dashed #7c7871;
+    background-color: #f5f5f5;
+  }
+  
+  .dropZone input {
+    display: none;
+  }
+  
+  .inputContainer {
+    font-family: Nunito;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 14px;
+    letter-spacing: 0em;
+  }
+  
+  .inputContainer input {
+    margin-top: 0.3rem;
+    height: 4.7vh;
+    width: 32.6vw;
+    border: none;
+    outline: none;
+    background-color: #f5f5f5;
+    padding-left: 1rem;
+  
+    font-family: Nunito;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 16px;
+    letter-spacing: -0.01em;
+  }
+  
+  .saveButton {
+    background-color: #fcecd1;
+    border-radius: 5px;
+    border: none;
+    width: 8.3vw;
+    height: 4.7vh;
+  }
+  
+  @media only screen and (max-width: 1280px) {
+    .dropZone {
+      width: 70%;
+    }
+  
+    .inputContainer > input {
+      width: 70%;
+    }
+  
+    .saveButton {
+      width: 10rem;
+    }
+  }
+  
+  @media only screen and (max-width: 767px) {
+    .container {
+      flex-direction: column-reverse;
+      height: 100vh;
+    }
+  
+    .dropZone {
+      width: 95%;
+    }
+  
+    .inputContainer > input {
+      width: 95%;
+    }
+  
+    .saveButton {
+      width: 40%;
+    }
+  }
+  
+    
+    

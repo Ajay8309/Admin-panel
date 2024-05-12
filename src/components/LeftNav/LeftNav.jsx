@@ -31,17 +31,17 @@ export default function LeftNavigation() {
 
           <Link to="/orders" className={`${s.asana} ${s.link}`}>
             {isAsanasActive ? (
-               <FontAwesomeIcon size='2x' icon={solidGem} />
+              <img src={User} alt="" className={s.img} />
               ) : (
-                <FontAwesomeIcon size='2x' icon={faGem} />
-            )}
+                <img src={UserLite} className={s.img} />
+                )}
           </Link>
 
           <Link to="/products" className={`${s.asana} ${s.link}`}>
             {isAsanasActive ? (
-               <FontAwesomeIcon size='2x' icon={solidGem} />
+              <img src={User} alt="" className={s.img} />
               ) : (
-                <FontAwesomeIcon size='2x' icon={faGem} />
+                <img src={UserLite} className={s.img} />
             )}
           </Link>
 

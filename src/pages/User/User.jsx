@@ -28,7 +28,7 @@ const User = () => {
 
   // console.log(cnt);
 
-  console.log(user);
+  // console.log(user);
 
   const handleFilterModalToggle = () => {
     setShowFilterModal(!showFilterModal);

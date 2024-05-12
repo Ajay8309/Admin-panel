@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import PulseLoader from "react-spinners/PulseLoader";
 import s from "./AccountForm.module.css";
+import { toast } from "react-hot-toast";
 
 const AccountForm = ({ setShowSettings, userData }) => {
   const { register, handleSubmit } = useForm({
@@ -21,14 +22,18 @@ const AccountForm = ({ setShowSettings, userData }) => {
   const [isSaving, setIsSaving] = useState(false);
   const { updateUserData } = useUser();
 
+  // console.log(userData);
+
   const onSubmit = async (data) => {
     setValidationError();
     setIsSaving(true);
     try {
       await updateUserData(data);
+      toast.success("User Details Saved");
       setShowSettings(false);
       setIsSaving(false);
     } catch (error) {
+      toast.error("Details not saved");
       setIsSaving(false);
       setValidationError(error.response.data.message);
     }
@@ -37,28 +42,27 @@ const AccountForm = ({ setShowSettings, userData }) => {
   return (
     <section className={s.accountFormContainer}>
       <div className={s.accountFormCard}>
-        <div className={s.accountFormHeader}>
-          <h3 className={s.accountFormTitle}>Account settings</h3>
-        </div>
-        <form onSubmit={handleSubmit(onSubmit)} className={s.accountFormContent}>
-          <Label className={s.accountFormLabel}>
+       
+        <form className={s.formContainer} onSubmit={handleSubmit(onSubmit)}>
+          <Label className={s.inputContainer}>
             <span className={`text-sm font-medium text-gray-500 ${s.accountFormLabelSpan}`}>Full name</span>
             <Input
               name="fullname"
               {...register("fullname")}
-              className={s.accountFormInput}
+              className={s.input}
             />
           </Label>
-          <Label className={s.accountFormLabel}>
+          <Label className={s.inputContainer}>
             <span className={`text-sm font-medium text-gray-500 ${s.accountFormLabelSpan}`}>Username</span>
             <Input
               name="username"
               {...register("username")}
-              className={s.accountFormInput}
+              className={s.input}
             />
             {validationError && <HelperText className={s.accountFormHelperText}>{validationError.username}</HelperText>}
           </Label>
-          <div className={s.accountFormLabel}>
+
+          <div className={s.inputContainer}>
             <span className={`text-sm font-medium text-gray-500 ${s.accountFormLabelSpan}`}>Email address</span>
             <Input
               name="email"
@@ -69,51 +73,51 @@ const AccountForm = ({ setShowSettings, userData }) => {
                   message: "Email not valid",
                 },
               })}
-              className={s.accountFormInput}
+              className={s.input}
             />
             {validationError && <HelperText className={s.accountFormHelperText}>{validationError.email}</HelperText>}
           </div>
-          <Label className={s.accountFormLabel}>
+          <Label className={s.inputContainer}>
             <span className={`text-sm font-medium text-gray-500 ${s.accountFormLabelSpan}`}>Address</span>
             <Input
               name="address"
               {...register("address")}
-              className={s.accountFormInput}
+              className={s.input}
             />
           </Label>
-          <Label className={s.accountFormLabel}>
+          <Label className={s.inputContainer}>
             <span className={`text-sm font-medium text-gray-500 ${s.accountFormLabelSpan}`}>City</span>
             <Input
               name="city"
               {...register("city")}
-              className={s.accountFormInput}
+              className={s.input}
             />
           </Label>
-          <Label className={s.accountFormLabel}>
+          <Label className={s.inputContainer}>
             <span className={`text-sm font-medium text-gray-500 ${s.accountFormLabelSpan}`}>State</span>
             <Input
               name="state"
               {...register("state")}
-              className={s.accountFormInput}
+              className={s.input}
             />
           </Label>
-          <Label className={s.accountFormLabel}>
+          <Label className={s.inputContainer}>
             <span className={`text-sm font-medium text-gray-500 ${s.accountFormLabelSpan}`}>Country</span>
             <Input
               name="country"
               {...register("country")}
-              className={s.accountFormInput}
+              className={s.input}
             />
           </Label>
-          <div className={s.accountFormActions}>
-            <Button disabled={isSaving} type="submit" className={s.accountFormButton}>
+          <div className={s.formEdit}>
+            <Button disabled={isSaving} type="submit" className={s.saveButton}>
               {isSaving ? <PulseLoader color={"#0a138b"} size={10} loading={isSaving} /> : "Save"}
             </Button>
             <Button
               disabled={isSaving}
               onClick={() => setShowSettings(false)}
               layout="outline"
-              className={s.accountFormButtonOutline}
+              className={s.saveButton}
             >
               Cancel
             </Button>
@@ -125,3 +129,4 @@ const AccountForm = ({ setShowSettings, userData }) => {
 };
 
 export default AccountForm;
+

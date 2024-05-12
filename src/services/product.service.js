@@ -22,6 +22,18 @@ class ProductService {
          return API.get(`/products/Material/${materialType}`); 
     }
 
+    createProduct({name, weight, description, image_url, category_name, material_type_name, carat}) {
+        return API.post(`/products`, {
+            name, 
+            weight, 
+            description, 
+            image_url, 
+            category_name, 
+            material_type_name, 
+            carat
+        });
+    }
+
     filterProducts(filters) {
         const filteredFilters = Object.fromEntries(
             Object.entries(filters).filter(([key, value]) => value !== undefined && value !== '')

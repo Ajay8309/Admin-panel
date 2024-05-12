@@ -8,14 +8,12 @@ const UserContext = createContext();
 
 const UserProvider = ({ children }) => {
     const [userData, setUserData] = useState(null);
-    const [authData, setAuthData] = useState({
-        token: "",
-    });
-
+    const [authData, setAuthData] = useState({ token: "" });
     const [loading, setLoading] = useState(false);
     const [user, setUser] = useState(null);
-
+    const [userById, setUserById] = useState(null);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [id, setId] = useState(null);
 
     useEffect(() => {
         if (isLoggedIn) {
@@ -47,10 +45,19 @@ const UserProvider = ({ children }) => {
             }
         }
     }, []);
+    
+    useEffect(() => {
+        userService.getUserById(id).then((response) => {
+            setUserById(response.data);
+        })
+    }, [id])
+    
+    
+   
 
     const updateUserData = async ({ fullname, email, username, address, city, state, country }) => {
         try {
-            const res = await API.put(`user/${userData.user_id}`, {
+            const res = await API.put(`user/${userById.user_id}`, {
                 fullname,
                 email,
                 username,
@@ -59,8 +66,8 @@ const UserProvider = ({ children }) => {
                 state,
                 country,
             });
-            setUserData(res.data);
-            console.log(res);
+            setUserById(res.data);
+            // console.log(userData);
         } catch (error) {
             // Handle the error, e.g., network request failed
             console.error("Error updating user data:", error);
@@ -99,7 +106,10 @@ const UserProvider = ({ children }) => {
                 setAuthData,
                 updateUserData,
                 user, 
-                setUser
+                setUser, 
+                userById, 
+                setId, 
+                id
             }}
         >
             <WithAxios>{children}</WithAxios>
