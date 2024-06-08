@@ -10,25 +10,17 @@ import Cross from '../../assets/cross.jpeg';
 import { useUser } from '../../context/UserContext';
 import { useNavigate } from 'react-router-dom';
 
-// Navigate
+
 
 const User = () => {
 
   const navigate = useNavigate();
   
-  const {logout, user, setUser} = useUser();
+  const {logout, user, setUser, setPage, page} = useUser();
 
   const [showFilterModal, setShowFilterModal] = useState(false);
   const [verifiedFilter, setVerifiedFilter] = useState(false);
   const [activeFilter, setActiveFilter] = useState(false);
-
-  // const [cnt, setCnt] = useState(0);
-
-  // setCnt(cnt + 1);
-
-  // console.log(cnt);
-
-  // console.log(user);
 
   const handleFilterModalToggle = () => {
     setShowFilterModal(!showFilterModal);
@@ -207,7 +199,7 @@ const User = () => {
             <img src={Arrowleft} alt="" className={s.ArrowL} />
           </button>
           <div className={s.pageInfo}>
-            <p className={s.currentPage}>page</p>
+            <p className={s.currentPage}>{page} page {page+1}</p>
           </div>
           <button className={s.nextPageButton}>
             <img src={Arrowright} className={s.ArrowR} alt="" />

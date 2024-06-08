@@ -14,6 +14,7 @@ const UserProvider = ({ children }) => {
     const [userById, setUserById] = useState(null);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [id, setId] = useState(null);
+    const [page, setPage] = useState(1);
 
     useEffect(() => {
         if (isLoggedIn) {
@@ -23,11 +24,11 @@ const UserProvider = ({ children }) => {
 
     useEffect(() => {
         setLoading(true);
-        userService.getUsers().then((Response) => {
+        userService.getUsers(page).then((Response) => {
             setUser(Response.data);
         })
         setLoading(false);
-    }, [setUser, setIsLoggedIn]);
+    }, [setUser, setIsLoggedIn, setPage]);
 
 
 
@@ -109,7 +110,9 @@ const UserProvider = ({ children }) => {
                 setUser, 
                 userById, 
                 setId, 
-                id
+                id, 
+                setPage, 
+                page
             }}
         >
             <WithAxios>{children}</WithAxios>

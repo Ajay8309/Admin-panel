@@ -182,7 +182,7 @@ const navigate = useNavigate();
                   </div>
                   <div
                     className={s.itemContainer}
-                    // onClick={() => navigate(`/edit/${product.id}`)}
+                    onClick={() => navigate(`/orders/${order.order_id}`, { state: { order } })}
                   >
                     <div className={s.UserData}>
                       <p className={s.UserData1}>{order.order_id}</p>

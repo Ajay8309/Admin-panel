@@ -309,7 +309,7 @@ border-radius: 5px;
 
 .cardContainer {
   overflow-y: auto;
-  max-height: 300px; 
+  max-height: 450px; 
   margin-top: 30px;
   /* border: 2px solid rgb(43, 255, 0); */
 }

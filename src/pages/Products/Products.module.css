@@ -327,7 +327,7 @@ border-radius: 5px;
 
 .cardContainer {
   overflow-y: auto;
-  max-height: 300px; 
+  max-height: 450px; 
   margin-top: 30px;
   /* border: 2px solid rgb(43, 255, 0); */
 }
@@ -534,6 +534,18 @@ border-radius: 5px;
   .delete{
            cursor: pointer;      
   }
+
+  .noProductsMessage {
+    align-items: center;
+      height: 100vh;
+      overflow-y: auto;
+      max-height: 450px;
+      font-size: 20px;
+      display: flex;
+      justify-content: center;
+      margin-top: 30px;
+  }
+
 
 
   /* media queries */

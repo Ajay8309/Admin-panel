@@ -8,11 +8,23 @@ import Nav from '../../components/Navigation/Nav';
 import { useNavigate, Link } from 'react-router-dom';
 
 const Products = () => {
-  const { products, setProducts } = useProduct();
+  const { products, setProducts, page, setPage} = useProduct();
 
-  console.log(products);
+  // console.log(products);
  
   const navigate = useNavigate();
+
+  const prevPage = () => {
+    if(page >= 1) {
+      setPage(page-1);
+    }else {
+      console.log("Cannot go to prev page:");
+    }
+  }
+
+  const nextPage = () => {
+    setPage(page+1);
+  }
 
   return (
     <div className={s.container}>
@@ -66,13 +78,13 @@ const Products = () => {
 
         
         <div className={s.pagination}>
-          <button className={s.previousPageButton}>
+          <button className={s.previousPageButton} onClick={prevPage}>
             <img src={Arrowleft} alt="" className={s.ArrowL} />
           </button>
           <div className={s.pageInfo}>
-            <p className={s.currentPage}>page</p>
+            <p className={s.currentPage}>{page} page {page+1}</p>
           </div>
-          <button className={s.nextPageButton}>
+          <button className={s.nextPageButton}  onClick={nextPage}>
             <img src={Arrowright} className={s.ArrowR} alt="" />
           </button>
         </div>

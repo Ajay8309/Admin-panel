@@ -20,6 +20,8 @@ const OrderProvider = ({children}) => {
         });
     },[page])
 
+    // console.log(orders);
+
   return (
     <OrderContext.Provider
     value={{

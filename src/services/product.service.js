@@ -47,6 +47,10 @@ class ProductService {
     
         return API.get(`/products/filter?${queryString}`);
     }
+
+    deleteProduct(id) {
+        return API.delete(`/products/${id}`);
+    }
     
 }
 

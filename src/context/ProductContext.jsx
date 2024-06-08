@@ -2,6 +2,7 @@ import { createContext, useContext, useEffect, useState } from "react";
 import productService from "../services/product.service";
 import { toast } from 'react-hot-toast';
 import API from "../api/axios.config";
+import authService from "../services/auth.service";
 
 const ProductContext = createContext();
 
@@ -106,8 +107,21 @@ const ProductProvider = ({ children }) => {
 
   // delete a product
   const deleteProduct = (id) => {
+    setIsLoading(true);
+    productService.deleteProduct(id)
+      .then(() => {
+        setProducts(products.filter(product => product.product_id !== id));
+        toast.success("Product deleted successfully");
+      })
+      .catch((error) => {
+        console.error("Failed to delete product:", error);
+        toast.error("Failed to delete product");
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
+  };
 
-  }
     
     
     

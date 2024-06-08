@@ -15,7 +15,7 @@ const ProductEdit = () => {
   const { id } = useParams();
   const [showSettings, setShowSettings] = useState(false);
   const [isSending, setIsSending] = useState(false);
-  const { getProductsById, product } = useProduct();
+  const { getProductsById, product, deleteProduct} = useProduct();
   const { logout } = useUser();
 
   useEffect(() => {
@@ -26,6 +26,19 @@ const ProductEdit = () => {
     logout();
     navigate('/login');
   };
+
+  const handleDelete = async () => {
+    setIsSending(true);
+    try {
+      await deleteProduct(id);
+      navigate('/products');
+    } catch (error) {
+      console.error("Failed to delete product:", error);
+    } finally {
+      setIsSending(false);
+    }
+  };
+
 
 
 
@@ -87,7 +100,7 @@ const ProductEdit = () => {
 
               <div className={s.formEdit}>
                 <Button className={s.saveButton} onClick={() => setShowSettings(!showSettings)}>Edit</Button>
-                <Button className={s.saveButton} >Delete</Button>
+                <Button className={s.saveButton} onClick={handleDelete} >Delete</Button>
               </div>
             </div> 
           </div>

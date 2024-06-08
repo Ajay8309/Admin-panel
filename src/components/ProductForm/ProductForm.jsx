@@ -5,6 +5,7 @@ import PulseLoader from "react-spinners/PulseLoader";
 import s from "./ProductForm.module.css";
 import { useProduct } from "../../context/ProductContext"; 
 import { toast } from "react-hot-toast";
+import { useUser } from "../../context/UserContext";
 
 const ProductForm = ({ setShowSettings, productData }) => {
   const { register, handleSubmit } = useForm({
@@ -15,30 +16,40 @@ const ProductForm = ({ setShowSettings, productData }) => {
       category_name: productData?.category_name,
       material_type_name: productData?.material_type_name,
       weight: productData?.weight,
+      image_url: "",
     },
   });
   const [validationError, setValidationError] = useState();
   const [isSaving, setIsSaving] = useState(false);
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [imageURL, setImageURL] = useState(productData?.image_url || "");
   const {updateProductData, product} = useProduct();
+  const {authData} = useUser()
+
+  // console.log(authData);
 
   const onSubmit = async (data) => {
-    setValidationError();
     setIsSaving(true);
     try {
-      // console.log(data);
-      await updateProductData(data);
+      // Upload image if selected
+    
+      // Update product data
+      console.log(data);
+      await updateProductData({
+        ...data,
+        // image_url: imageURL,
+      });
+
       toast.success("Saved details");
       setShowSettings(false);
-      setIsSaving(false);
     } catch (error) {
+      console.error("Error updating product:", error);
+      setValidationError("Failed to update the product.");
+    } finally {
       setIsSaving(false);
-      setValidationError(error.response.data.message);
     }
   };
-
-  // console.log(product);
-
-  
+    
   
   return (
     <section className={s.productFormContainer}>
@@ -51,10 +62,9 @@ const ProductForm = ({ setShowSettings, productData }) => {
       <input
         type="file"
         name="file"
+        {...register("image_url")}
         // ref={fileInputRef}
-        // onChange={(e) => {
-        //   setSelectedFile(e.target.files[0]);
-        // }}
+        // onChange={handleFileChange}
       />
     </div>
   </div>
@@ -124,3 +134,6 @@ const ProductForm = ({ setShowSettings, productData }) => {
 };
 
 export default ProductForm;
+
+
+

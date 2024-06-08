@@ -3,8 +3,8 @@ import API from "../api/axios.config";
 class userService {
 
 
-    getUsers() {
-        return API.get(`/user`);
+    getUsers(page) {
+        return API.get(`/user/?page=${page}`);
       }  
 
     getUserById(id) {

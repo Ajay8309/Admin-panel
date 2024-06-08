@@ -11,6 +11,7 @@ import UserEdit from './pages/UserEdit/UserEdit'
 import ProductEdit from './pages/ProductEdit/ProductEdit'
 import AddProduct from './pages/AddProduct/AddProduct'
 import Spinner from './components/Spinner/Spinner'
+import OrderDetails from './pages/OrderDetails/OrderDetails'
 // import {Login, Signup, ProductList, ProductDetails, Cart, 
   // Wishlist, Profile, Checkout, Order, OrderDetails, LandingPage} from './pages'
 import Layout from './layout/layout';
@@ -33,6 +34,7 @@ const App = () => {
     <Route path="/edit/:id" element = {<UserEdit/>}/>
     <Route path="/edit-product/:id" element = {<ProductEdit/>}/>
     <Route path="/orders" element = {<Orders/>}/>
+    <Route path="/orders/:id" element = {<OrderDetails/>}/>
     <Route path="/products" element = {<Products/>}/>
     <Route path='/' element={<User/>}/>
     {/* route for adding new Product */}
