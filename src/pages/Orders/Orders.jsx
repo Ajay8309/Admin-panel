@@ -1,5 +1,5 @@
-import React from 'react'
-import LeftNavigation from '../../components/LeftNav/LeftNav'
+import React from 'react';
+import LeftNavigation from '../../components/LeftNav/LeftNav';
 import TableSearch from '../../assets/tabler_search.jpeg';
 import Logout from '../../assets/tabler_logout.jpeg';
 import Arrowleft from '../../assets/arrowLeft.jpeg';
@@ -10,21 +10,20 @@ import { useUser } from '../../context/UserContext';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import s from './Orders.module.css';
-import {useOrder} from "../../context/OrderContext"
-
+import { useOrder } from "../../context/OrderContext";
 
 const Orders = () => {
-
-const navigate = useNavigate();
+  const navigate = useNavigate();
   
-  const {logout} = useUser();
-  const {orders, setOrder} = useOrder();
+  const { logout } = useUser();
+  const { orders, setOrder } = useOrder();
 
   const [showFilterModal, setShowFilterModal] = useState(false);
   const [verifiedFilter, setVerifiedFilter] = useState(false);
   const [activeFilter, setActiveFilter] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
 
-  console.log(orders);
+  // console.log(orders);
 
   const handleFilterModalToggle = () => {
     setShowFilterModal(!showFilterModal);
@@ -33,22 +32,33 @@ const navigate = useNavigate();
   const handleLogout = () => {
     logout();
     navigate('/login');
-  }
+  };
 
   const handleApplyFilter = () => {
     // Implement filter logic here
   };
 
   const handleClearSearch = () => {
-    // Toggle the filter modal to close it when clearing the search
     setShowFilterModal(false);
+    setSearchQuery(''); 
   };
+
+  const handleSearchChange = (event) => {
+    setSearchQuery(event.target.value); 
+  };
+
+  const filteredOrders = orders.filter((u) =>
+    u.status.toLowerCase().includes(searchQuery.toLowerCase())
+    //  ||
+    // u.order_id.includes(searchQuery) 
+    // ||
+    // u.email.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
   return (
     <div className={s.container}>
-        <LeftNavigation/>
-
-        <div className={s.rightContainer}>
+      <LeftNavigation />
+      <div className={s.rightContainer}>
         <div className={s.navigation}>
           <div className={s.navContainer}>
             <div className={s.PageName}>
@@ -62,12 +72,14 @@ const navigate = useNavigate();
                     type="text"
                     placeholder="search"
                     className={s.searchInput}
+                    value={searchQuery} // Bind search input to searchQuery state
+                    onChange={handleSearchChange} // Handle search input change
                   />
                   <div className={s.searchIcons}>
                     <img
                       src={TableSearch}
                       className={s.searchButton}
-                      alt=""
+                      alt="search"
                     />
                   </div>
                 </div>
@@ -79,7 +91,7 @@ const navigate = useNavigate();
                           Verified user
                         </label>
                         <div className={s.checkBoxContainer}>
-                          <label htmlFor="">
+                          <label>
                             <input
                               type="radio"
                               name="verifiedYes"
@@ -89,7 +101,7 @@ const navigate = useNavigate();
                             />
                             Yes
                           </label>
-                          <label htmlFor="">
+                          <label>
                             <input
                               type="radio"
                               name="verifiedNo"
@@ -106,7 +118,7 @@ const navigate = useNavigate();
                           User Activity
                         </label>
                         <div className={s.checkBoxContainer}>
-                          <label htmlFor="">
+                          <label>
                             <input
                               type="radio"
                               name="activeYes"
@@ -116,7 +128,7 @@ const navigate = useNavigate();
                             />
                             Active
                           </label>
-                          <label htmlFor="">
+                          <label>
                             <input
                               type="radio"
                               name="ActiveNo"
@@ -140,7 +152,7 @@ const navigate = useNavigate();
                         src={Cross}
                         className={s.modalClearSearch}
                         onClick={handleClearSearch}
-                        alt=""
+                        alt="clear search"
                       />
                     </div>
                   </div>
@@ -154,8 +166,8 @@ const navigate = useNavigate();
               </div>
             </div>
             <div className={s.logoutButton}>
-              <img src={Delete} alt="" className={s.delete} />
-              <img src={Logout} alt="" className={s.imgBtn} onClick={handleLogout} />
+              <img src={Delete} alt="delete" className={s.delete} />
+              <img src={Logout} alt="logout" className={s.imgBtn} onClick={handleLogout} />
             </div>
           </div>
         </div>
@@ -168,7 +180,7 @@ const navigate = useNavigate();
           </div>
           <div className={s.cardContainer}>
             <div className={s.scrollableContainer}>
-              {orders && orders.map((order) => (
+              {filteredOrders.map((order) => (
                 <div className={s.card} key={order.order_id}>
                   <div className={s.checkBoxAndProfile}>
                     <input
@@ -212,7 +224,7 @@ const navigate = useNavigate();
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default Orders;

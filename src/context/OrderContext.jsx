@@ -10,6 +10,16 @@ const OrderProvider = ({children}) => {
     const [orders, setOrders] = useState([]);
     const [loading, setLoading] = useState(false);
     const [page, setPage] = useState(1);
+    const [order, setOrder] = useState(null);
+    // const [orderStatus, setOrderStatus] = useState();
+
+
+    const updateStatus = (data) => {
+      // console.log(data);
+      orderService.updateOrderStatus(data).then((response) => {
+        setOrder(response.data);
+      })
+    }
 
 
     useEffect(() => {
@@ -30,7 +40,9 @@ const OrderProvider = ({children}) => {
       loading, 
       setLoading, 
       page, 
-      setPage
+      setPage, 
+      updateStatus, 
+      order
     }}
 >
     <WithAxios>{children}</WithAxios>

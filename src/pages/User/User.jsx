@@ -10,17 +10,13 @@ import Cross from '../../assets/cross.jpeg';
 import { useUser } from '../../context/UserContext';
 import { useNavigate } from 'react-router-dom';
 
-
-
 const User = () => {
-
   const navigate = useNavigate();
-  
-  const {logout, user, setUser, setPage, page} = useUser();
-
+  const { logout, user, setUser, setPage, page } = useUser();
   const [showFilterModal, setShowFilterModal] = useState(false);
   const [verifiedFilter, setVerifiedFilter] = useState(false);
   const [activeFilter, setActiveFilter] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
 
   const handleFilterModalToggle = () => {
     setShowFilterModal(!showFilterModal);
@@ -29,16 +25,26 @@ const User = () => {
   const handleLogout = () => {
     logout();
     navigate('/login');
-  }
+  };
 
   const handleApplyFilter = () => {
     // Implement filter logic here
   };
 
   const handleClearSearch = () => {
-    // Toggle the filter modal to close it when clearing the search
     setShowFilterModal(false);
+    setSearchQuery('');
   };
+
+  const handleSearchChange = (event) => {
+    setSearchQuery(event.target.value);
+  };
+
+  const filteredUsers = (user || []).filter((u) =>
+    u.username.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    u.fullname.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    u.email.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
   return (
     <div className={s.container}>
@@ -56,14 +62,12 @@ const User = () => {
                   <input
                     type="text"
                     placeholder="search"
+                    value={searchQuery}
+                    onChange={handleSearchChange}
                     className={s.searchInput}
                   />
                   <div className={s.searchIcons}>
-                    <img
-                      src={TableSearch}
-                      className={s.searchButton}
-                      alt=""
-                    />
+                    <img src={TableSearch} className={s.searchButton} alt="" />
                   </div>
                 </div>
                 {showFilterModal && (
@@ -125,10 +129,7 @@ const User = () => {
                       </div>
                     </div>
                     <div className={s.apply}>
-                      <button
-                        className={s.modalButton}
-                        onClick={handleApplyFilter}
-                      >
+                      <button className={s.modalButton} onClick={handleApplyFilter}>
                         Apply filters
                       </button>
                       <img
@@ -163,7 +164,7 @@ const User = () => {
           </div>
           <div className={s.cardContainer}>
             <div className={s.scrollableContainer}>
-              {user && user.map((user) => (
+              {filteredUsers.map((user) => (
                 <div className={s.card} key={user.id}>
                   <div className={s.checkBoxAndProfile}>
                     <input
@@ -199,7 +200,7 @@ const User = () => {
             <img src={Arrowleft} alt="" className={s.ArrowL} />
           </button>
           <div className={s.pageInfo}>
-            <p className={s.currentPage}>{page} page {page+1}</p>
+            <p className={s.currentPage}>{page} page {page + 1}</p>
           </div>
           <button className={s.nextPageButton}>
             <img src={Arrowright} className={s.ArrowR} alt="" />

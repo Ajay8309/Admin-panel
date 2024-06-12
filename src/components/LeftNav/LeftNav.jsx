@@ -5,17 +5,24 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGem } from '@fortawesome/free-regular-svg-icons';
 import { faGem as solidGem } from '@fortawesome/free-solid-svg-icons';
 import User from '../../assets/Frame4.svg';
+import lightOrder from "../../assets/lightOrder.png"
+import darkOrder from "../../assets/darkOrder.png"
+import { IoBagHandle } from "react-icons/io5";
+import { IoBagHandleOutline } from "react-icons/io5";
 import UserLite from '../../assets/Frame4Lite.svg';
+import { BsBoxSeamFill } from "react-icons/bs";
+import { BsBoxSeam } from "react-icons/bs";
+
  
 // const 
 
 
 export default function LeftNavigation() {
   const location = useLocation();
-  const isUsersActive = location.pathname === '/Users' || location.pathname.includes("edit");
+  const isUsersActive = location.pathname === '/' || location.pathname.includes("/edit/");
 
-  const isAsanasActive = location.pathname === '/orders';
-//   const isWorkoutsActive = location.pathname === '/Workouts';
+  const isOrderActive = location.pathname === '/orders';
+  const isProductActive = location.pathname === '/products';
 
   return (
     <div>
@@ -30,18 +37,18 @@ export default function LeftNavigation() {
           </Link>
 
           <Link to="/orders" className={`${s.asana} ${s.link}`}>
-            {isAsanasActive ? (
-              <img src={User} alt="" className={s.img} />
+            {isOrderActive ? (
+              <IoBagHandle size={38} color='black'  className={s.img}/>
               ) : (
-                <img src={UserLite} className={s.img} />
+                <IoBagHandleOutline color='black' size={38} />
                 )}
           </Link>
 
           <Link to="/products" className={`${s.asana} ${s.link}`}>
-            {isAsanasActive ? (
-              <img src={User} alt="" className={s.img} />
+            {isProductActive ? (
+              <BsBoxSeamFill color='black' size={35} className={s.img} />
               ) : (
-                <img src={UserLite} className={s.img} />
+              <BsBoxSeam color='black' name='Products' size={35} className={s.img} />
             )}
           </Link>
 

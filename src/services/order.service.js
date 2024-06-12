@@ -21,6 +21,13 @@ class OrderService {
     getOrder(id) {
         return API.get(`/order/${id}`);
     }
+
+    updateOrderStatus({id, status}) {
+        console.log(id);
+        return API.put(`/order/${id}`, {
+            status
+        });
+    }
 }
 
 export default new OrderService();
