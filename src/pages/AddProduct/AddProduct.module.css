@@ -140,6 +140,8 @@
     }
     }
     
+    
+
     .searchInput{
       background: none;
       /* width: 420px; */
@@ -462,7 +464,7 @@
   }
   
   .dropZone input {
-    display: none;
+    display:block;
   }
   
   .inputContainer {

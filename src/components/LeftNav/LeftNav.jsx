@@ -21,8 +21,8 @@ export default function LeftNavigation() {
   const location = useLocation();
   const isUsersActive = location.pathname === '/' || location.pathname.includes("/edit/");
 
-  const isOrderActive = location.pathname === '/orders';
-  const isProductActive = location.pathname === '/products';
+  const isOrderActive = location.pathname.includes('/orders');
+  const isProductActive = location.pathname.includes('/products') || location.pathname.includes('edit-product');
 
   return (
     <div>

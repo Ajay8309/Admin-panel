@@ -137,7 +137,7 @@ const Nav = ({ isProductsPage, selectAll, onSearch }) => {
         </div>
         <div className={s.logoutButton}>
           <div className={s.logContainer}>
-            <img src={Delete} alt="" className={s.delete} />
+            {/* <img src={Delete} alt="" className={s.delete} /> */}
             <img src={Logout} alt="" className={s.imgBtn} onClick={handleLogout} />
           </div>
           <Link to={'/add-product'}>

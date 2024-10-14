@@ -23,7 +23,7 @@ const Orders = () => {
   const [activeFilter, setActiveFilter] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
 
-  // console.log(orders);
+  console.log(orders);
 
   const handleFilterModalToggle = () => {
     setShowFilterModal(!showFilterModal);

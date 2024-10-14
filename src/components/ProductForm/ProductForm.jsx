@@ -16,7 +16,7 @@ const ProductForm = ({ setShowSettings, productData }) => {
       category_name: productData?.category_name,
       material_type_name: productData?.material_type_name,
       weight: productData?.weight,
-      image_url: "",
+      // image_url: "",
     },
   });
   const [validationError, setValidationError] = useState();
@@ -62,7 +62,7 @@ const ProductForm = ({ setShowSettings, productData }) => {
       <input
         type="file"
         name="file"
-        {...register("image_url")}
+        // {...register("image_url")}
         // ref={fileInputRef}
         // onChange={handleFileChange}
       />
